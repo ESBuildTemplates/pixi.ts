@@ -67,9 +67,9 @@ export function dist(a: PIXI.IPointData, b: PIXI.IPointData): number {
 }
 
 export function getWidth(): number {
-  return document.body.clientWidth
+  return window.innerWidth
 }
 
 export function getHeight(): number {
-  return document.body.clientHeight
+  return window.innerHeight
 }
