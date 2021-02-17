@@ -4,6 +4,8 @@ export const app = new PIXI.Application({
   resizeTo: window,
 })
 
+export const mouse: PIXI.Point = app.renderer.plugins.interaction.mouse.global
+
 document.body.appendChild(app.view)
 
 export function getAnimatedSprite(
@@ -25,13 +27,10 @@ export function getAnimatedSprite(
 
 export function getSprite(name: string): PIXI.Sprite {
   const resource = PIXI.Loader.shared.resources[`assets/sprites/${name}.png`]
-  return new PIXI.Sprite(resource.texture)
-}
-
-export function listenInteraction(
-  callback: (event: PIXI.InteractionEvent) => unknown
-) {
-  return callback
+  const sprite = new PIXI.Sprite(resource.texture)
+  sprite.anchor.set(0.5)
+  sprite.visible = true
+  return sprite
 }
 
 export function resizeAsBackground(sprite: PIXI.Sprite | PIXI.AnimatedSprite) {
@@ -67,4 +66,10 @@ export function dist(a: PIXI.IPointData, b: PIXI.IPointData): number {
   return Math.sqrt(c * c + d * d)
 }
 
-export const mouse: PIXI.Point = app.renderer.plugins.interaction.mouse.global
+export function getWidth(): number {
+  return document.body.clientWidth
+}
+
+export function getHeight(): number {
+  return document.body.clientHeight
+}

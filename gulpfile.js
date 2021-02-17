@@ -28,4 +28,4 @@ function watch() {
 }
 
 exports.bundle = bundle
-exports.watch = watch
+exports.watch = gulp.series(bundle, watch)
