@@ -34,21 +34,21 @@ export function getSprite(name: string): PIXI.Sprite {
 }
 
 export function resizeAsBackground(sprite: PIXI.Sprite | PIXI.AnimatedSprite) {
-  const { clientWidth, clientHeight } = document.body
+  const { innerWidth, innerHeight } = window
 
   const ratio = sprite.width / sprite.height
-  const clientRatio = clientWidth / clientHeight
+  const clientRatio = innerWidth / innerHeight
 
   if (clientRatio > ratio) {
-    sprite.height /= sprite.width / clientWidth
-    sprite.width = clientWidth
+    sprite.height /= sprite.width / innerWidth
+    sprite.width = innerWidth
     sprite.position.x = 0
-    sprite.position.y = (clientHeight - sprite.height) / 2
+    sprite.position.y = (innerHeight - sprite.height) / 2
   } else {
-    sprite.width /= sprite.height / clientHeight
-    sprite.height = clientHeight
+    sprite.width /= sprite.height / innerHeight
+    sprite.height = innerHeight
     sprite.position.y = 0
-    sprite.position.x = (clientWidth - sprite.width) / 2
+    sprite.position.x = (innerWidth - sprite.width) / 2
   }
 }
 
