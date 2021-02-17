@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "cache",
+    "module": "commonjs",
+    "target": "es2020",
+    "lib": ["es2020", "dom"],
+    "noImplicitAny": true,
+    "declaration": true,
+    "sourceMap": true
+  }
+}
