@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js"
-import * as game from "./game"
+import * as game from "../core/game"
 
 let hello: PIXI.Sprite
 
@@ -8,13 +8,13 @@ let hello: PIXI.Sprite
  */
 export async function setup() {
   hello = game.getSprite("hello")
-  hello.position.set(game.getWidth() / 2, game.getHeight() / 2)
+  game.app.stage.addChild(hello)
 }
 
 /**
  * Called for each Game tick
  */
 export async function update() {
-  const oscillation = Math.sin(Date.now())
-  hello.position.y = game.getHeight() / 2 + oscillation
+  const oscillation = Math.sin(Date.now() / 100) * 10
+  hello.position.set(game.getWidth() / 2, game.getHeight() / 2 + oscillation)
 }
