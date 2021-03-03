@@ -23,6 +23,6 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "pixi.js": "^5.3.7"
+    "pixi.js": "^6.0.0"
   }
 }
