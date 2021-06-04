@@ -20,12 +20,16 @@ function bundle() {
     .pipe(gulp.dest("./dist/"))
 }
 
-function watch() {
-  exec("reload -b --dir=dist --port=5000", (err, stdout) => {
-    if (err) throw err
-  })
-  return gulp.watch("src/**/*.ts", bundle)
+function copyPublic() {
+  gulp.src("public").pipe(gulp.dest("./dist"))
 }
 
-exports.bundle = bundle
-exports.watch = gulp.series(bundle, watch)
+function watch() {
+  exec("reload -b --dir=dist --port=5000", (err) => {
+    if (err) throw err
+  })
+  return gulp.watch("src/**/*.ts", gulp.series(bundle, copyPublic))
+}
+
+exports.bundle = gulp.series(bundle, copyPublic)
+exports.watch = gulp.series(bundle, copyPublic, watch)
