@@ -16,12 +16,12 @@ export function getAnimatedSprite(
   }> = {}
 ): PIXI.AnimatedSprite {
   const resource = PIXI.Loader.shared.resources[`assets/sprites/${name}.json`]
-  const sprite = new PIXI.AnimatedSprite(Object.values(resource.textures))
+  const sprite = new PIXI.AnimatedSprite(Object.values(resource.textures ?? {}))
   sprite.animationSpeed = 15 / 60
   sprite.anchor.set(0.5)
   sprite.visible = true
   if (options.play) sprite.play()
-  sprite.loop = options.loop
+  sprite.loop = options.loop ?? true
   return sprite
 }
 
