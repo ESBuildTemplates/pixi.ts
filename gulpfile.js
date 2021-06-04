@@ -10,7 +10,7 @@ function bundle() {
         outfile: "bundle.js",
         sourcemap: "inline",
         bundle: true,
-        target: ["chrome58", "firefox57", "safari11", "edge16"],
+        target: ["chrome60", "firefox55", "safari11", "edge18"],
         loader: {
           ".ts": "ts",
           ".json": "json",
@@ -21,7 +21,7 @@ function bundle() {
 }
 
 function copyPublic() {
-  gulp.src("public").pipe(gulp.dest("./dist"))
+  return gulp.src("public/**/*").pipe(gulp.dest("./dist"))
 }
 
 function watch() {
