@@ -6,7 +6,6 @@
     "semi": false
   },
   "scripts": {
-    "stop": "pm2 delete shooter",
     "bundle": "gulp bundle",
     "start": "gulp watch",
     "format": "prettier --write src gulpfile.js tsconfig.json"
