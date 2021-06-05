@@ -16,7 +16,7 @@
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-esbuild": "^0.8.1",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.1",
     "reload": "^3.1.1",
     "typescript": "^4.3.2"
   },
