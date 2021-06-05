@@ -1,5 +1,12 @@
+# IDE
 .idea
-package-lock.json
+.vscode
+
+# Node, Yarn
 yarn.lock
+package-lock.json
 node_modules
 yarn-error.log
+
+# Compilation
+dist
