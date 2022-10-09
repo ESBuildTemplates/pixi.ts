@@ -6,6 +6,11 @@ export const app = new PIXI.Application({
 
 export const mouse: PIXI.Point = app.renderer.plugins.interaction.mouse.global
 
+export const ticker = PIXI.Ticker.shared
+export const loader = PIXI.Loader.shared
+
+export const container = app.stage
+
 document.body.appendChild(app.view)
 
 export function getAnimatedSprite(
@@ -25,12 +30,24 @@ export function getAnimatedSprite(
   return sprite
 }
 
-export function getSprite(name: string): PIXI.Sprite {
+export function getSprite(
+  name: string,
+  edit?: (it: PIXI.Sprite) => void
+): PIXI.Sprite {
   const resource = PIXI.Loader.shared.resources[`assets/sprites/${name}.png`]
   const sprite = new PIXI.Sprite(resource.texture)
-  sprite.anchor.set(0.5)
-  sprite.visible = true
+  edit?.(sprite)
   return sprite
+}
+
+export function getText(
+  text: string,
+  style?: Partial<PIXI.ITextStyle>,
+  edit?: (it: PIXI.Text) => void
+): PIXI.Text {
+  const element = new PIXI.Text(text, style)
+  edit?.(element)
+  return element
 }
 
 export function resizeAsBackground(sprite: PIXI.Sprite | PIXI.AnimatedSprite) {
@@ -72,4 +89,37 @@ export function getWidth(): number {
 
 export function getHeight(): number {
   return window.innerHeight
+}
+
+/**
+ *
+ * @param speed from 0 (motionless) to 1 (normal)
+ * @param amplitude in pixel
+ */
+export function getOscillation(speed: number, amplitude: number) {
+  // fixme: delta not works?
+  return (
+    Math.sin((ticker.lastTime / 100) * speed) * amplitude * ticker.deltaTime
+  )
+}
+
+export function pause() {
+  ticker.stop()
+}
+
+export function play() {
+  ticker.start()
+}
+
+export function isPaused() {
+  return !ticker.started
+}
+
+export function debugTime() {
+  console.table({
+    elapsedMS: ticker.elapsedMS,
+    lastTime: ticker.lastTime,
+    deltaTime: ticker.deltaTime,
+    deltaMS: ticker.deltaMS,
+  })
 }

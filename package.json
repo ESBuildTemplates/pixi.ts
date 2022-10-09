@@ -11,16 +11,16 @@
     "format": "prettier --write public src **/*.json"
   },
   "devDependencies": {
-    "@types/node": "^15.12.1",
-    "esbuild": "^0.12.6",
+    "@types/node": "^18.8.3",
+    "esbuild": "^0.15.10",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
-    "gulp-esbuild": "^0.8.1",
-    "prettier": "^2.3.1",
-    "reload": "^3.1.1",
-    "typescript": "^4.3.2"
+    "gulp-esbuild": "^0.10.5",
+    "prettier": "^2.7.1",
+    "reload": "^3.2.0",
+    "typescript": "^4.8.4"
   },
   "dependencies": {
-    "pixi.js": "^6.0.4"
+    "pixi.js": "^6.5.5"
   }
 }
