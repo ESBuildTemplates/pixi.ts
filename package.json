@@ -1,26 +1,32 @@
 {
   "name": "ts-pixi",
   "version": "0.1",
+  "type": "module",
   "license": "MIT",
   "prettier": {
     "semi": false
   },
   "scripts": {
-    "bundle": "gulp bundle",
-    "start": "gulp watch",
+    "build": "rollup -c",
+    "start": "rollup -c -w",
     "format": "prettier --write public src **/*.json"
   },
   "devDependencies": {
-    "@types/node": "^18.8.3",
-    "esbuild": "^0.15.10",
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.3.0",
-    "gulp-esbuild": "^0.10.5",
-    "prettier": "^2.7.1",
-    "reload": "^3.2.0",
-    "typescript": "^4.8.4"
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-html": "^1.0.4",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/node": "^22.10.1",
+    "prettier": "^3.4.1",
+    "rollup": "^4.27.4",
+    "rollup-plugin-copy": "^3.5.0",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-serve": "^2.0.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "pixi.js": "^6.5.5"
+    "pixi.js": "^8.6.1"
   }
 }

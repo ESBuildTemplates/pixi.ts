@@ -1,18 +1,20 @@
-import * as PIXI from "pixi.js"
+import * as pixi from "pixi.js"
 import * as game from "./core/game"
 import * as sketch from "./app/sketch"
 
+import './style.css'
+
+console.log("pixi.js", pixi.VERSION)
+
 async function setup() {
-  await new Promise((resolve) => {
-    game.loader
-      // .add("assets/sprites/animation.json")
-      .add("assets/sprites/hello.png")
-      .load(resolve)
-  })
+  try {
+    await game.initGame()
+    await sketch.setup()
 
-  await sketch.setup()
-
-  game.ticker.add(sketch.update, undefined, PIXI.UPDATE_PRIORITY.HIGH)
+    game.ticker.add(sketch.update, undefined, pixi.UPDATE_PRIORITY.HIGH)
+  } catch (error) {
+    console.error("Setup error:", error)
+  }
 }
-
-setup().catch()
+ 
+setup().catch(error => console.error("Fatal error:", error))
