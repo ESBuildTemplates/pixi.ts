@@ -1,8 +1,8 @@
-import * as PIXI from "pixi.js"
+import * as pixi from "pixi.js"
 
 export const keys = new Set<Key>()
 
-class Key extends PIXI.utils.EventEmitter {
+class Key extends pixi.EventEmitter {
   private _isPressed: boolean = false
   private _pressedAt: number = 0
 
@@ -19,24 +19,6 @@ class Key extends PIXI.utils.EventEmitter {
     } else {
       this._isPressed = false
     }
-  }
-
-  on(
-    event: "up" | "down",
-    fn: (event: KeyboardEvent, duration: number) => unknown,
-    context?: any
-  ): this {
-    super.on(event, fn, context)
-    return this
-  }
-
-  once(
-    event: "up" | "down",
-    fn: (event: KeyboardEvent, duration: number) => unknown,
-    context?: any
-  ): this {
-    super.once(event, fn, context)
-    return this
   }
 
   get duration(): number {
@@ -72,10 +54,4 @@ document.addEventListener("keyup", (event) => {
   keys.forEach((key) => {
     if (key.isMineEvent(event)) key.handle(event, "up")
   })
-})
-
-export const mouse = new PIXI.Point()
-
-document.addEventListener("mousemove", (event) => {
-  mouse.set(event.clientX, event.clientY)
 })
